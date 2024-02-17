@@ -6,7 +6,6 @@ std::vector<Order> orders;
 
 void addOrder() {
     Order newOrder;
-    // Assume Order struct has id, bookId, quantity
     std::cout << "Enter order ID: ";
     std::cin >> newOrder.id;
     std::cout << "Enter book ID: ";

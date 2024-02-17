@@ -1,0 +1,7 @@
+#how to run the application
+ g++ -std=c++11 main.cpp user.cpp book.cpp order.cpp utils.cpp -o runner
+
+
+
+#after 
+./runner   
