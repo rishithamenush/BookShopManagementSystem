@@ -5,86 +5,119 @@
 #include "/Users/rishithamenusha/Desktop/Infinity/CSE4002/nethra_bookshop_system/include/utils.h"
 
 using namespace std;
+
+// ANSI Color Codes
+const string RED = "\033[31m";
+const string GREEN = "\033[32m";
+const string YELLOW = "\033[33m";
+const string CYAN = "\033[36m";
+const string RESET = "\033[0m";
+
+
 bool isLoggedIn = false; 
 
 void displayMainMenu();
+void clearConsole();
 void manageBooks();
 void manageOrders();
 void userLogin();
 void exitSystem();
 
 int main() {
-    bool isLoggedIn = false; // Track if user is logged in
+    cout << CYAN << "\n╔══════════════════════════════════════════════════════════════╗\n";
+    cout << "║                                                              ║\n";
+    cout << "║                  Nethra Bookshop Automation System           ║\n";
+    cout << "║                                                              ║\n";
+    cout << "╚══════════════════════════════════════════════════════════════╝\n" << RESET;
+    cout << "\n";
+
+
+    userLogin();
+
     char choice;
 
-    do {
+    while(isLoggedIn) { 
+        clearConsole();
         displayMainMenu();
         cin >> choice;
         switch(choice) {
             case '1':
-                if (isLoggedIn) {
-                    manageBooks();
-                } else {
-                    cout << "Please login first." << endl;
-                }
+                manageBooks();
                 break;
             case '2':
-                if (isLoggedIn) {
-                    manageOrders();
-                } else {
-                    cout << "Please login first." << endl;
-                }
+                manageOrders();
                 break;
             case '3':
-                userLogin();
-                isLoggedIn = true; 
-                break;
-            case '4':
                 exitSystem();
-                break;
+                return 0; 
             default:
-                cout << "Invalid choice. Please try again." << endl;
+                cout << RED << "Invalid choice. Please try again.\n" << RESET;
         }
-    } while(choice != '4');
+    }
 
     return 0;
 }
 
+
 void displayMainMenu() {
-    cout << "\n=== Nethra Bookshop Automation System ===\n";
-    cout << "1. Manage Books\n";
-    cout << "2. Manage Orders\n";
-    cout << "3. User Login\n";
-    cout << "4. Exit\n";
-    cout << "Enter your choice: ";
+        cout << CYAN;
+    cout << "\n╔══════════════════════════════════════════════════════════════╗\n";
+    cout << "║                                                              ║\n";
+    cout << "║             Welcome Nethra Bookshop Automation System        ║\n";
+    cout << "║                                                              ║\n";
+    cout << "╚══════════════════════════════════════════════════════════════╝\n" << RESET;
+    cout << "\n";
+    cout <<GREEN<< "1. Manage Books\n";
+    cout << "\n";
+    cout <<GREEN<< "2. Manage Orders\n";
+    cout << "\n";
+    cout <<GREEN<< "3. Exit\n";
+    cout << "\n";
+    cout <<GREEN<< "Enter your choice: ";
 }
 
 void manageBooks() {
     int choice;
     do {
-        cout << "\n=== Book Management ===\n";
-        cout << "1. Add a Book\n";
-        cout << "2. View All Books\n";
-        cout << "3. Search for a Book\n";
-        cout << "4. Return to Main Menu\n";
-        cout << "Enter your choice: ";
+        clearConsole();
+         cout << CYAN;
+    cout << "\n╔══════════════════════════════════════════════════════════════╗\n";
+    cout << "║                                                              ║\n";
+    cout << "║                        Books Management                      ║\n";
+    cout << "║                                                              ║\n";
+    cout << "╚══════════════════════════════════════════════════════════════╝\n" << RESET;
+    cout << "\n";
+        cout <<GREEN<<  "1. Add a Book\n";
+        cout << "\n";
+        cout <<GREEN<< "2. View All Books\n";
+        cout << "\n";
+        cout <<GREEN<< "3. Search for a Book\n";
+        cout << "\n";
+        cout <<GREEN<< "4. Return to Main Menu\n";
+        cout << "\n";
+        cout <<GREEN<< "Enter your choice: ";
+        
+
+
+
         cin >> choice;
 
         switch(choice) {
             case 1:
-                addBook(); // Function defined in book.cpp
+                addBook();
                 break;
             case 2:
-                viewBooks(); // Function defined in book.cpp
+                viewBooks();
                 break;
             case 3:
-                searchBooks(); // Function defined in book.cpp
+                searchBooks();
                 break;
             case 4:
                 cout << "Returning to main menu...\n";
                 break;
             default:
-                cout << "Invalid choice. Please try again.\n";
+                cout << "\n";
+                cout << RED << "Invalid choice. Please try again.\n" << RESET;
         }
     } while(choice != 4);
 }
@@ -92,11 +125,21 @@ void manageBooks() {
 void manageOrders() {
     int choice;
     do {
-        cout << "\n=== Order Management ===\n";
-        cout << "1. Add an Order\n";
-        cout << "2. View All Orders\n";
-        cout << "3. Return to Main Menu\n";
-        cout << "Enter your choice: ";
+        clearConsole();
+         cout << CYAN;
+    cout << "\n╔══════════════════════════════════════════════════════════════╗\n";
+    cout << "║                                                              ║\n";
+    cout << "║                        Order Management                      ║\n";
+    cout << "║                                                              ║\n";
+    cout << "╚══════════════════════════════════════════════════════════════╝\n" << RESET;
+    cout << "\n";
+        cout << GREEN<< "1. Add an Order\n";
+        cout << "\n";
+        cout <<GREEN<< "2. View All Orders\n";
+        cout << "\n";
+        cout <<GREEN<< "3. Return to Main Menu\n";
+        cout << "\n";
+        cout <<GREEN<< "Enter your choice: ";
         cin >> choice;
 
         switch(choice) {
@@ -104,38 +147,47 @@ void manageOrders() {
                 addOrder();
                 break;
             case 2:
-                viewOrders(); 
+                viewOrders();
                 break;
             case 3:
+            cout << "\n";
                 cout << "Returning to main menu...\n";
                 break;
             default:
-                cout << "Invalid choice. Please try again.\n";
+            cout << "\n";
+                cout << RED << "Invalid choice. Please try again.\n" << RESET;
         }
     } while(choice != 3);
 }
 
-
 void userLogin() {
     string username, password;
-    cout << "Enter username: ";
-    cin >> username;
-    cout << "Enter password: ";
-    cin >> password;
+    do {
+        cout << "Enter username: ";
+        
+        cin >> username;
+        cout << "\n";
+        cout << "Enter password: ";
+        
+        cin >> password;
+        cout << "\n";
 
-    if (login(username, password)) {
-        cout << "Login successful.\n";
-        isLoggedIn = true;
-    } else {
-        cout << "Login failed. Please try again.\n";
-        isLoggedIn = false;
-    }
-
-
+        if (login(username, password)) {
+            isLoggedIn = true;
+            clearConsole();
+        } else {
+            cout << "\n";
+            cout << RED << "Login failed. Please try again.\n" << RESET;
+            isLoggedIn = false;
+        }
+    } while (!isLoggedIn); 
 }
 
 void exitSystem() {
+    cout << YELLOW << "Exiting the system. Goodbye!\n" << RESET;
+}
 
-     cout << "Exiting the system. Goodbye!\n";
-
+void clearConsole() {
+    
+    cout << "\033[2J\033[1;1H"; 
 }
