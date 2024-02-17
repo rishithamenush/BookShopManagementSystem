@@ -1,10 +1,9 @@
-#include "user.h"
+#include "/Users/rishithamenusha/Desktop/Infinity/CSE4002/nethra_bookshop_system/include/user.h"
 #include <iostream>
 #include <string>
 
 bool login(const std::string& username, const std::string& password) {
-    // Placeholder for authentication logic
-    // In a real application, you would check these against a database or a file
+    // Implementation that checks the credentials
     if (username == "admin" && password == "password") {
         std::cout << "Login successful.\n";
         return true;
@@ -14,14 +13,4 @@ bool login(const std::string& username, const std::string& password) {
     }
 }
 
-void userLogin() {
-    std::string username, password;
-    std::cout << "Enter username: ";
-    std::cin >> username;
-    std::cout << "Enter password: ";
-    std::cin >> password;
-
-    if (!login(username, password)) {
-        std::cout << "Invalid username or password. Please try again.\n";
-    }
-}
+// Other functions as necessary

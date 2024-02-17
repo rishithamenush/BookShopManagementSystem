@@ -5,6 +5,7 @@
 #include "/Users/rishithamenusha/Desktop/Infinity/CSE4002/nethra_bookshop_system/include/utils.h"
 
 using namespace std;
+bool isLoggedIn = false; 
 
 void displayMainMenu();
 void manageBooks();
@@ -36,7 +37,7 @@ int main() {
                 break;
             case '3':
                 userLogin();
-                isLoggedIn = true; // Assume login is successful for simplicity
+                isLoggedIn = true; 
                 break;
             case '4':
                 exitSystem();
@@ -59,25 +60,82 @@ void displayMainMenu() {
 }
 
 void manageBooks() {
-    // Placeholder for managing books
-    cout << "Book Management Module. Implement corresponding functions." << endl;
-    // Example function call: addBook(), viewBooks(), searchBooks()
+    int choice;
+    do {
+        cout << "\n=== Book Management ===\n";
+        cout << "1. Add a Book\n";
+        cout << "2. View All Books\n";
+        cout << "3. Search for a Book\n";
+        cout << "4. Return to Main Menu\n";
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        switch(choice) {
+            case 1:
+                addBook(); // Function defined in book.cpp
+                break;
+            case 2:
+                viewBooks(); // Function defined in book.cpp
+                break;
+            case 3:
+                searchBooks(); // Function defined in book.cpp
+                break;
+            case 4:
+                cout << "Returning to main menu...\n";
+                break;
+            default:
+                cout << "Invalid choice. Please try again.\n";
+        }
+    } while(choice != 4);
 }
 
 void manageOrders() {
-    // Placeholder for managing orders
-    cout << "Order Management Module. Implement corresponding functions." << endl;
-    // Example function call: viewOrders(), prepareQuotation()
+    int choice;
+    do {
+        cout << "\n=== Order Management ===\n";
+        cout << "1. Add an Order\n";
+        cout << "2. View All Orders\n";
+        cout << "3. Return to Main Menu\n";
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        switch(choice) {
+            case 1:
+                addOrder();
+                break;
+            case 2:
+                viewOrders(); 
+                break;
+            case 3:
+                cout << "Returning to main menu...\n";
+                break;
+            default:
+                cout << "Invalid choice. Please try again.\n";
+        }
+    } while(choice != 3);
 }
 
+
 void userLogin() {
-    // Placeholder for user login functionality
-    cout << "User Login Module. Implement login functionality here." << endl;
-    // Example function call: login(username, password)
+    string username, password;
+    cout << "Enter username: ";
+    cin >> username;
+    cout << "Enter password: ";
+    cin >> password;
+
+    if (login(username, password)) {
+        cout << "Login successful.\n";
+        isLoggedIn = true;
+    } else {
+        cout << "Login failed. Please try again.\n";
+        isLoggedIn = false;
+    }
+
+
 }
 
 void exitSystem() {
-    cout << "Exiting the system. Goodbye!" << endl;
-    // Perform any cleanup necessary before exiting
-    // Example: save data to file, close database connections, etc.
+
+     cout << "Exiting the system. Goodbye!\n";
+
 }
